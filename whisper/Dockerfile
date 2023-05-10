@@ -2,7 +2,7 @@ FROM debian:bullseye-slim
 
 # Install Whisper
 WORKDIR /usr/src
-ARG WHISPER_VERSION='0.0.1'
+ARG WHISPER_VERSION='0.0.3'
 
 RUN \
     apt-get update \
