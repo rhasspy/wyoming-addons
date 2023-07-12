@@ -1,0 +1,16 @@
+.PHONY: local run
+
+TAG := rhasspy/wyoming-openwakeword
+PLATFORMS := linux/amd64,linux/arm64
+MODEL := "hey_rhasspy"
+HOST := 0.0.0.0
+PORT := 10400
+
+all:
+	docker buildx build . --platform "$(PLATFORMS)" --tag "$(TAG)" --push
+
+local:
+	docker build . -t "$(TAG)" --build-arg TARGETARCH=amd64
+
+run:
+	docker run -it -p '$(PORT):$(PORT)' "$(TAG)" --model "$(MODEL)" --uri 'tcp://$(HOST):$(PORT)' --debug
