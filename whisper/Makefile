@@ -11,7 +11,7 @@ all:
 	docker buildx build . --platform linux/amd64,linux/arm64 --tag "$(TAG)" --push
 
 local:
-	docker build . -t rhasspy/wyoming-whisper
+	docker build . -t "$(TAG)"
 
 run:
 	mkdir -p "$(DATA_DIR)"
