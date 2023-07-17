@@ -4,7 +4,7 @@ VERSION := 1.1.0
 TAG := rhasspy/wyoming-piper
 PLATFORMS := linux/amd64,linux/arm64,linux/arm/v7
 DATA_DIR := ${HOME}/.local/share/wyoming/piper
-VOICE := en-us-lessac-medium
+VOICE := en_US-lessac-medium
 HOST := 0.0.0.0
 PORT := 10200
 
@@ -12,7 +12,7 @@ all:
 	docker buildx build . --platform "$(PLATFORMS)" --tag "$(TAG):$(VERSION)" --push
 
 update:
-	docker buildx build . --platform "$(PLATFORMS)" --tag "$(TAG)" --push
+	docker buildx build . --platform "$(PLATFORMS)" --tag "$(TAG):latest" --push
 
 local:
 	docker build . -t "$(TAG):$(VERSION)" --build-arg TARGETARCH=amd64
