@@ -1,6 +1,6 @@
 .PHONY: local run update
 
-VERSION := 0.0.3
+VERSION := 1.0.0
 TAG := rhasspy/wyoming-whisper
 PLATFORMS := linux/amd64,linux/arm64
 DATA_DIR := ${HOME}/.local/share/wyoming/whisper
@@ -20,4 +20,4 @@ local:
 
 run:
 	mkdir -p "$(DATA_DIR)"
-	docker run -it -p '$(PORT):$(PORT)' -v "$(DATA_DIR):/data" "$(TAG):$(VERSION)" --model "$(MODEL)" --language "$(MODEL_LANG)" --uri 'tcp://$(HOST):$(PORT)'
+	docker run -it -p '$(PORT):$(PORT)' -v "$(DATA_DIR):/data" "$(TAG):$(VERSION)" --model "$(MODEL)" --language "$(MODEL_LANG)" --uri 'tcp://$(HOST):$(PORT)' --debug
