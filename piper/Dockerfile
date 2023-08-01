@@ -4,8 +4,8 @@ ARG TARGETVARIANT
 
 # Install Piper
 WORKDIR /usr/src
-ARG PIPER_LIB_VERSION='1.1.0'
-ARG PIPER_RELEASE='v1.1.0'
+ARG PIPER_LIB_VERSION='1.2.0'
+ARG PIPER_RELEASE='v1.2.0'
 
 RUN \
     apt-get update \
@@ -17,7 +17,7 @@ RUN \
     && pip3 install --no-cache-dir -U \
         setuptools \
         wheel \
-    && pip3 install --no-cache-dir -f '.' \
+    && pip3 install --no-cache-dir \
         "wyoming-piper==${PIPER_LIB_VERSION}" \
     \
     && curl -L -s \
