@@ -1,4 +1,4 @@
-FROM debian:bullseye-slim
+FROM nvidia/cuda:11.2.2-cudnn8-runtime-ubuntu20.04
 
 # Install Whisper
 WORKDIR /usr/src
