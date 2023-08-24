@@ -1,4 +1,4 @@
-FROM debian:bullseye-slim
+FROM nvidia/cuda:12.1.1-cudnn8-runtime-ubuntu22.04
 ARG TARGETARCH
 ARG TARGETVARIANT
 
@@ -17,6 +17,7 @@ RUN \
     && pip3 install --no-cache-dir -U \
         setuptools \
         wheel \
+        onnxruntime-gpu \
     && pip3 install --no-cache-dir \
         "wyoming-piper @ https://github.com/rhasspy/wyoming-piper/archive/refs/tags/v${WYOMING_PIPER_VERSION}.tar.gz" \
     \
