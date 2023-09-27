@@ -1,6 +1,6 @@
 .PHONY: local run update
 
-VERSION := 1.2.0
+VERSION := 1.5.0
 TAG := rhasspy/wyoming-openwakeword
 PLATFORMS := linux/amd64,linux/arm64
 MODEL := "ok_nabu"
@@ -17,4 +17,4 @@ local:
 	docker build . -t "$(TAG):$(VERSION)" --build-arg TARGETARCH=amd64
 
 run:
-	docker run -it -p '$(PORT):$(PORT)' "$(TAG):$(VERSION)" --model "$(MODEL)" --uri 'tcp://$(HOST):$(PORT)' --debug
+	docker run -it -p '$(PORT):$(PORT)' "$(TAG):$(VERSION)" --model "$(MODEL)" --preload-model "$(MODEL)" --uri 'tcp://$(HOST):$(PORT)' --debug
