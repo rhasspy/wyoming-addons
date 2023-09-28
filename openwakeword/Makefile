@@ -1,6 +1,6 @@
 .PHONY: local run update
 
-VERSION := 1.5.0
+VERSION := 1.5.1
 TAG := rhasspy/wyoming-openwakeword
 PLATFORMS := linux/amd64,linux/arm64
 MODEL := "ok_nabu"
