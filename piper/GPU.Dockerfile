@@ -32,4 +32,4 @@ COPY run-gpu.sh ./
 
 EXPOSE 10200
 
-ENTRYPOINT ["bash", "/run.sh"]
+ENTRYPOINT ["bash", "/run-gpu.sh"]
