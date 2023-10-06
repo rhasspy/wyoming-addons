@@ -1,0 +1,44 @@
+version: '3'
+services:
+  wyoming-piper:
+    extends:
+      file: docker-compose.base.yml
+      service: wyoming-piper
+    build:
+      dockerfile: GPU.Dockerfile
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+  wyoming-whisper:
+    extends:
+      file: docker-compose.base.yml
+      service: wyoming-whisper
+    build:
+      dockerfile: GPU.Dockerfile
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+  wyoming-openwakeword:
+    extends:
+      file: docker-compose.base.yml
+      service: wyoming-openwakeword
+    build:
+      dockerfile: GPU.Dockerfile
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
