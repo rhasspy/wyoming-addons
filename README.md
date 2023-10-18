@@ -5,6 +5,7 @@ Docker-only builds for Home Assistant add-ons that use the [Wyoming protocol](ht
 * [Whisper](https://hub.docker.com/r/rhasspy/wyoming-whisper) ([Add-on](https://github.com/home-assistant/addons/blob/master/whisper/README.md))
 * [Piper](https://hub.docker.com/r/rhasspy/wyoming-piper) ([Add-on](https://github.com/home-assistant/addons/blob/master/piper/README.md))
 * [openWakeWord](https://hub.docker.com/r/rhasspy/wyoming-openwakeword) ([Add-on](https://github.com/home-assistant/addons/blob/master/openwakeword/README.md))
+* [snowboy](https://hub.docker.com/r/rhasspy/wyoming-snowboy) ([Add-on](https://github.com/rhasspy/hassio-addons/tree/master/snowboy/README.md))
 
 
 ## Run Whisper
@@ -24,4 +25,10 @@ docker run -it -p 10200:10200 -v /path/to/local/data:/data rhasspy/wyoming-piper
 
 ``` sh
 docker run -it -p 10400:10400 rhasspy/wyoming-openwakeword --preload-model 'ok_nabu'
+```
+
+## Run snowboy
+
+``` sh
+docker run -it -p 10400:10400 rhasspy/wyoming-snowboy
 ```
