@@ -1,8 +1,8 @@
 .PHONY: local run update
 
-VERSION := 1.7.1
+VERSION := 1.8.0
 TAG := rhasspy/wyoming-openwakeword
-PLATFORMS := linux/amd64,linux/arm64
+PLATFORMS := linux/amd64,linux/arm64,linux/arm/v7
 MODEL := "ok_nabu"
 HOST := 0.0.0.0
 PORT := 10400
