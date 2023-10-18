@@ -22,6 +22,7 @@ RUN \
         setuptools \
         wheel \
     && pip3 install --no-cache-dir \
+        --extra-index-url https://www.piwheels.org/simple \
         "wyoming-snowboy @ https://github.com/rhasspy/wyoming-snowboy/archive/refs/tags/v${WYOMING_SNOWBOY_VERSION}.tar.gz" \
     && curl --location --output - \
         "https://github.com/rhasspy/snowman-enroll/releases/download/v${SNOWMAN_ENROLL_VERSION}/snowman_enroll-${TARGETARCH}${TARGETVARIANT}.tar.gz" | \
