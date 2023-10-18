@@ -25,7 +25,11 @@ RUN \
         "wyoming-snowboy @ https://github.com/rhasspy/wyoming-snowboy/archive/refs/tags/v${WYOMING_SNOWBOY_VERSION}.tar.gz" \
     && curl --location --output - \
         "https://github.com/rhasspy/snowman-enroll/releases/download/v${SNOWMAN_ENROLL_VERSION}/snowman_enroll-${TARGETARCH}${TARGETVARIANT}.tar.gz" | \
-        tar -xzf -
+        tar -xzf - \
+    && apt-get remove --yes build-essential swig curl \
+    && apt-get autoclean \
+    && apt-get purge \
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /
 COPY src/train.py /usr/src/
