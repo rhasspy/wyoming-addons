@@ -41,9 +41,9 @@ script/run ... --sentences-dir <SENTENCES_DIR> --correct-sentences <CUTOFF>
 where `<CUTOFF>` is:
 
 * empty or 0 - force transcript to be one of the template sentences
-* 1-100 - allow more sentences that are not similar to templates to pass through
+* greater than 0 - allow more sentences that are not similar to templates to pass through
 
-When `<CUTOFF>` is 100, speech recognition is effectively open-ended again. Experiment with different values to find one that lets you speak sentences outside your templates without sacrificing accuracy too much.
+When `<CUTOFF>` is large, speech recognition is effectively open-ended again. Experiment with different values to find one that lets you speak sentences outside your templates without sacrificing accuracy too much.
 
 If you have a set of sentences with a specific pattern that you'd like to skip correction, add them to your [no-correct patterns](#no-correct-patterns).
 
