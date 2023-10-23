@@ -4,9 +4,8 @@ ARG TARGETVARIANT
 
 # Install porcupine1
 WORKDIR /usr/src
+ENV WYOMING_PORCUPINE1_VERSION=1.0.1
 ENV PIP_BREAK_SYSTEM_PACKAGES=1
-
-COPY ./src/ ./
 
 RUN \
     apt-get update \
@@ -19,8 +18,7 @@ RUN \
         wheel \
     && pip3 install --no-cache-dir \
         --extra-index-url https://www.piwheels.org/simple \
-        'numpy<1.26' \
-        -r requirements.txt \
+        "wyoming-porcupine1==${WYOMING_PORCUPINE1_VERSION}" \
     \
     && rm -rf /var/lib/apt/lists/*
 
