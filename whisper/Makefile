@@ -1,8 +1,8 @@
 .PHONY: local run update
 
-VERSION := 1.0.0
+VERSION := 1.1.0
 TAG := rhasspy/wyoming-whisper
-PLATFORMS := linux/amd64,linux/arm64
+PLATFORMS := linux/amd64,linux/arm64,linux/armv7
 DATA_DIR := ${HOME}/.local/share/wyoming/whisper
 MODEL := tiny-int8
 MODEL_LANG := en

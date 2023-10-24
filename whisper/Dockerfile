@@ -16,6 +16,7 @@ RUN \
         setuptools \
         wheel \
     && pip3 install --no-cache-dir \
+        --extra-index-url https://www.piwheels.org/simple \
         "wyoming-faster-whisper==${WHISPER_VERSION}" \
     \
     && apt-get purge -y --auto-remove \
