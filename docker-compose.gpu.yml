@@ -27,6 +27,7 @@ services:
             - driver: nvidia
               count: 1
               capabilities: [gpu]
+    command: [ "--model", "tiny-int8", "--language", "en", "--device", "cuda" ]
 
   wyoming-openwakeword:
     extends:
