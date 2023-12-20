@@ -4,7 +4,7 @@ ARG TARGETVARIANT
 
 # Install openWakeWord
 WORKDIR /usr/src
-ARG OPENWAKEWORD_LIB_VERSION='1.8.1'
+ARG OPENWAKEWORD_LIB_VERSION='1.8.2'
 
 RUN \
     apt-get update \
