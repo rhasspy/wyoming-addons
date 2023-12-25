@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.8.2
+
+- Handle wake word aliases
+- Add executable
+- correct argument descriptions
+
 ## 1.8.1
 
 - Remove batching from wake word processing since not all models support it
