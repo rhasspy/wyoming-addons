@@ -6,6 +6,9 @@ services:
       service: wyoming-piper
     build:
       dockerfile: GPU.Dockerfile
+    volumes:
+      - ./piper/__main__.py:/usr/local/lib/python3.10/dist-packages/wyoming_piper/__main__.py
+      - ./piper/process.py:/usr/local/lib/python3.10/dist-packages/wyoming_piper/process.py
     deploy:
       resources:
         reservations:
