@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
-python3 -m wyoming_openwakeword \
+cd /usr/src
+.venv/bin/python3 -m wyoming_openwakeword \
     --uri 'tcp://0.0.0.0:10400' "$@"
