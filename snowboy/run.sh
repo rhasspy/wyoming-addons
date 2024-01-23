@@ -30,10 +30,10 @@ done
 # When trained, a .pmdl file with the same name as the directory will be
 # present.
 if [ -n "${train_dir}" ]; then
-    python3 train.py \
+    .venv/bin/python3 train.py \
         --train-dir "${train_dir}" \
         --snowman-dir . "${train_args[@]}"
 fi
 
-python3 -m wyoming_snowboy \
+.venv/bin/python3 -m wyoming_snowboy \
     --uri 'tcp://0.0.0.0:10400' "${snowboy_args[@]}"
