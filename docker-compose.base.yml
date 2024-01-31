@@ -6,8 +6,6 @@ services:
       dockerfile: NONGPU.Dockerfile
     ports:
       - "10200:10200"
-    volumes:
-      - ./piper-data:/data
     command: [ "--voice", "en_US-lessac-medium" ]
     restart: unless-stopped
 
@@ -17,8 +15,6 @@ services:
       dockerfile: NONGPU.Dockerfile
     ports:
       - "10300:10300"
-    volumes:
-      - ./whisper-data:/data
     command: [ "--model", "tiny-int8", "--language", "en" ]
     restart: unless-stopped
 
@@ -28,8 +24,6 @@ services:
       dockerfile: NONGPU.Dockerfile
     ports:
       - "10400:10400"
-    volumes:
-      - ./openwakeword-data:/data
     command: [ "--preload-model", "ok_nabu" ]
     restart: unless-stopped
 
