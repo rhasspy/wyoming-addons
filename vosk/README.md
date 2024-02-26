@@ -187,6 +187,7 @@ With `--allow-unknown`, you can enable the detection of "unknown" words/phrases 
 
 ## Supported Languages
 
+* Arabic (`ar`)
 * Catalan (`ca`)
 * Czech (`cz`)
     * Does not work with [allow unknown](#allow-unknown)
@@ -213,6 +214,7 @@ With `--allow-unknown`, you can enable the detection of "unknown" words/phrases 
     * Does not work with [allow unknown](#allow-unknown)
 * Swedish (`sv`)
     * Does not work with [limited sentences](#limited) and [allow unknown](#allow-unknown)
+* Ukrainian (`uk`)
 * Vietnamese (`vn`)
 * Chinese (`zh`)
 
