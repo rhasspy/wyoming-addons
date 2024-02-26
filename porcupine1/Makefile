@@ -1,6 +1,6 @@
 .PHONY: local run update
 
-VERSION := 1.0.1
+VERSION := 1.2.0
 TAG := rhasspy/wyoming-porcupine1
 PLATFORMS := linux/amd64,linux/arm64,linux/arm/v7
 HOST := 0.0.0.0
