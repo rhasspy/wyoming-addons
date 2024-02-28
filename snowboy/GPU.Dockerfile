@@ -4,9 +4,8 @@ ARG TARGETVARIANT
 
 # Install wyoming-snowboy
 WORKDIR /usr/src
-ENV WYOMING_SNOWBOY_VERSION=1.0.0
+ENV WYOMING_SNOWBOY_VERSION=1.2.1
 ENV SNOWMAN_ENROLL_VERSION=1.0.0
-ENV PIP_BREAK_SYSTEM_PACKAGES=1
 
 RUN \
     apt-get update \
@@ -14,14 +13,16 @@ RUN \
         python3 \
         python3-pip \
         python3-dev \
+        python3-venv \
         build-essential \
         swig \
         libatlas-base-dev \
         curl \
-    && pip3 install --no-cache-dir -U \
+    && python3 -m venv .venv \
+    && .venv/bin/pip3 install --no-cache-dir -U \
         setuptools \
         wheel \
-    && pip3 install --no-cache-dir \
+    && .venv/bin/pip3 install --no-cache-dir \
         --extra-index-url https://www.piwheels.org/simple \
         "wyoming-snowboy @ https://github.com/rhasspy/wyoming-snowboy/archive/refs/tags/v${WYOMING_SNOWBOY_VERSION}.tar.gz" \
     && curl --location --output - \
