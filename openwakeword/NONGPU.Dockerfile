@@ -1,24 +1,26 @@
-FROM debian:bullseye-slim
+FROM debian:bookworm-slim
 ARG TARGETARCH
 ARG TARGETVARIANT
 
 # Install openWakeWord
 WORKDIR /usr/src
-ARG OPENWAKEWORD_LIB_VERSION='1.8.1'
+ARG WYOMING_OPENWAKEWORD_VERSION='1.10.0'
 
 RUN \
     apt-get update \
     && apt-get install -y --no-install-recommends \
         python3 \
         python3-pip \
+        python3-venv \
         libopenblas0 \
     \
-    && pip3 install --no-cache-dir -U \
+    && python3 -m venv .venv \
+    && .venv/bin/pip3 install --no-cache-dir -U \
         setuptools \
         wheel \
-    && pip3 install --no-cache-dir \
+    && .venv/bin/pip3 install --no-cache-dir \
         --extra-index-url https://www.piwheels.org/simple \
-        "wyoming-openwakeword==${OPENWAKEWORD_LIB_VERSION}" \
+        "wyoming-openwakeword @ https://github.com/rhasspy/wyoming-openwakeword/archive/refs/tags/v${WYOMING_OPENWAKEWORD_VERSION}.tar.gz" \
     \
     && rm -rf /var/lib/apt/lists/*
 

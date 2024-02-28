@@ -4,8 +4,8 @@ ARG TARGETVARIANT
 
 # Install Piper
 WORKDIR /usr/src
-ARG PIPER_LIB_VERSION='1.4.0'
-ARG PIPER_RELEASE='v1.2.0'
+ARG WYOMING_PIPER_VERSION='1.5.0'
+ARG BINARY_PIPER_VERSION='1.2.0'
 
 RUN \
     apt-get update \
@@ -18,10 +18,10 @@ RUN \
         setuptools \
         wheel \
     && pip3 install --no-cache-dir \
-        "wyoming-piper==${PIPER_LIB_VERSION}" \
+        "wyoming-piper @ https://github.com/rhasspy/wyoming-piper/archive/refs/tags/v${WYOMING_PIPER_VERSION}.tar.gz" \
     \
     && curl -L -s \
-        "https://github.com/rhasspy/piper/releases/download/${PIPER_RELEASE}/piper_${TARGETARCH}${TARGETVARIANT}.tar.gz" \
+        "https://github.com/rhasspy/piper/releases/download/v${BINARY_PIPER_VERSION}/piper_${TARGETARCH}${TARGETVARIANT}.tar.gz" \
         | tar -zxvf - -C /usr/share \
     \
     && rm -rf /var/lib/apt/lists/*
