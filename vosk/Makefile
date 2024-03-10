@@ -1,6 +1,6 @@
 .PHONY: local run update
 
-VERSION := 1.5.0
+VERSION := 1.5.1
 TAG := rhasspy/wyoming-vosk
 PLATFORMS := linux/amd64,linux/arm64,linux/arm/v7
 HOST := 0.0.0.0

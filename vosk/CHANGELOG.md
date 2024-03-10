@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.5.1
+
+- Add libatomic1
+
 ## 1.5.0
 
 - Restore Arabic and Ukrainian models
