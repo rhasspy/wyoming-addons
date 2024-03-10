@@ -12,6 +12,7 @@ RUN \
     && apt-get install -y --no-install-recommends \
         python3 \
         python3-pip \
+        libatomic1 \
     && pip3 install --no-cache-dir -U \
         setuptools \
         wheel \
