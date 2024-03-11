@@ -2,7 +2,7 @@ FROM debian:bullseye-slim
 
 # Install Whisper
 WORKDIR /usr/src
-ARG WHISPER_VERSION='1.0.1'
+ARG WYOMING_WHISPER_VERSION='2.0.0'
 
 RUN \
     apt-get update \
@@ -17,7 +17,7 @@ RUN \
         wheel \
     && pip3 install --no-cache-dir \
         --extra-index-url https://www.piwheels.org/simple \
-        "wyoming-faster-whisper==${WHISPER_VERSION}" \
+        "wyoming-faster-whisper @ https://github.com/rhasspy/wyoming-faster-whisper/archive/refs/tags/v${WYOMING_WHISPER_VERSION}.tar.gz" \
     \
     && apt-get purge -y --auto-remove \
         build-essential \
