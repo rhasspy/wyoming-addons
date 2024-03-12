@@ -1,4 +1,9 @@
 version: '3'
+### YAML Anchors ###
+x-restart: &restart
+  restart: unless-stopped
+
+####
 services:
   wyoming-piper:
     build:
@@ -7,7 +12,7 @@ services:
     ports:
       - "10200:10200"
     command: [ "--voice", "en_US-lessac-medium" ]
-    restart: unless-stopped
+    <<: [ *restart ]
 
   wyoming-whisper:
     build:
@@ -16,7 +21,16 @@ services:
     ports:
       - "10300:10300"
     command: [ "--model", "tiny-int8", "--language", "en" ]
-    restart: unless-stopped
+    <<: [ *restart ]
+
+#  wyoming-whispercpp:
+#    build:
+#      context: ./whisper-cpp/
+#      dockerfile: NONGPU.Dockerfile
+#    ports:
+#      - "10300:10300"
+#    command: [ "--model", "tiny-int8", "--language", "en" ]
+#    <<: [ *restart ]
 
   wyoming-openwakeword:
     build:
@@ -25,5 +39,29 @@ services:
     ports:
       - "10400:10400"
     command: [ "--preload-model", "ok_nabu" ]
-    restart: unless-stopped
+    <<: [ *restart ]
+
+#  wyoming-porcupine:
+#    build:
+#      context: ./porcupine1/
+#      dockerfile: NONGPU.Dockerfile
+#    ports:
+#      - "10400:10400"
+#    <<: [ *restart ]
+
+#  wyoming-snowboy:
+#    build:
+#      context: ./snowboy/
+#      dockerfile: NONGPU.Dockerfile
+#    ports:
+#      - "10400:10400"
+#    <<: [ *restart ]
+
+#  wyoming-vosk:
+#    build:
+#      context: ./vosk/
+#      dockerfile: NONGPU.Dockerfile
+#    ports:
+#      - "10400:10400"
+#    <<: [ *restart ]
 
