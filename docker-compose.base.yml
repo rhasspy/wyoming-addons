@@ -3,7 +3,7 @@ version: '3'
 x-common: &common
   build:
     args:
-      - BASE='debian:bullseye-slim'
+      - BASE=debian:bullseye-slim
   restart: unless-stopped
 
 ####

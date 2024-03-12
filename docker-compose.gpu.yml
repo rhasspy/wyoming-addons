@@ -3,7 +3,7 @@ version: '3'
 x-gpu: &gpu
   build:
     args:
-      - BASE='nvidia/cuda:12.1.1-cudnn8-runtime-ubuntu22.04'
+      - BASE=nvidia/cuda:12.1.1-cudnn8-runtime-ubuntu22.04
   runtime: nvidia
   deploy:
     resources:
@@ -22,9 +22,9 @@ services:
     <<: [ *gpu ]
     build:
       args:
-        - BASE='nvidia/cuda:11.2.2-cudnn8-runtime-ubuntu20.04'
-        - EXTRA_DEPENDENCIES='onnxruntime-gpu'
-        - RUN_SCRIPT='run-gpu.sh'
+        - BASE=nvidia/cuda:11.2.2-cudnn8-runtime-ubuntu20.04
+        - EXTRA_DEPENDENCIES=onnxruntime-gpu
+        - RUN_SCRIPT=run-gpu.sh
     volumes:
       - ./piper/__main__.py:/usr/local/lib/python3.10/dist-packages/wyoming_piper/__main__.py
       - ./piper/process.py:/usr/local/lib/python3.10/dist-packages/wyoming_piper/process.py
