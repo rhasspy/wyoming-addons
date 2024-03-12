@@ -1,6 +1,9 @@
 version: '3'
 ### YAML Anchors ###
-x-restart: &restart
+x-common: &common
+  build:
+    args:
+      - BASE='debian:bullseye-slim'
   restart: unless-stopped
 
 ####
@@ -8,60 +11,53 @@ services:
   wyoming-piper:
     build:
       context: ./piper/
-      dockerfile: NONGPU.Dockerfile
     ports:
       - "10200:10200"
     command: [ "--voice", "en_US-lessac-medium" ]
-    <<: [ *restart ]
+    <<: [ *common ]
 
   wyoming-whisper:
     build:
       context: ./whisper/
-      dockerfile: NONGPU.Dockerfile
     ports:
       - "10300:10300"
     command: [ "--model", "tiny-int8", "--language", "en" ]
-    <<: [ *restart ]
+    <<: [ *common ]
 
 #  wyoming-whispercpp:
 #    build:
 #      context: ./whisper-cpp/
-#      dockerfile: NONGPU.Dockerfile
 #    ports:
 #      - "10300:10300"
 #    command: [ "--model", "tiny-int8", "--language", "en" ]
-#    <<: [ *restart ]
+#    <<: [ *common ]
 
   wyoming-openwakeword:
     build:
       context: ./openwakeword/
-      dockerfile: NONGPU.Dockerfile
     ports:
       - "10400:10400"
     command: [ "--preload-model", "ok_nabu" ]
-    <<: [ *restart ]
+    <<: [ *common ]
 
 #  wyoming-porcupine:
 #    build:
 #      context: ./porcupine1/
-#      dockerfile: NONGPU.Dockerfile
 #    ports:
 #      - "10400:10400"
-#    <<: [ *restart ]
+#    <<: [ *common ]
 
 #  wyoming-snowboy:
 #    build:
 #      context: ./snowboy/
-#      dockerfile: NONGPU.Dockerfile
 #    ports:
 #      - "10400:10400"
-#    <<: [ *restart ]
+#    <<: [ *common ]
 
 #  wyoming-vosk:
 #    build:
 #      context: ./vosk/
-#      dockerfile: NONGPU.Dockerfile
 #    ports:
 #      - "10400:10400"
-#    <<: [ *restart ]
+#    <<: [ *common ]
 
