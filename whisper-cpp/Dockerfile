@@ -1,4 +1,6 @@
-FROM nvidia/cuda:11.2.2-cudnn8-runtime-ubuntu20.04
+ARG BASE
+FROM $BASE
+
 ARG TARGETARCH
 ARG TARGETVARIANT
 

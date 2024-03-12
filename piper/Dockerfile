@@ -1,4 +1,8 @@
-FROM nvidia/cuda:12.1.1-cudnn8-runtime-ubuntu22.04
+ARG BASE
+FROM BASE
+
+ARG EXTRA_DEPENDENCIES
+ARG RUN_SCRIPT
 ARG TARGETARCH
 ARG TARGETVARIANT
 
@@ -17,7 +21,7 @@ RUN \
     && pip3 install --no-cache-dir -U \
         setuptools \
         wheel \
-        onnxruntime-gpu \
+        $EXTRA_DEPENDENCIES \
     && pip3 install --no-cache-dir \
         "wyoming-piper @ https://github.com/rhasspy/wyoming-piper/archive/refs/tags/v${WYOMING_PIPER_VERSION}.tar.gz" \
     \
@@ -28,8 +32,8 @@ RUN \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /
-COPY run-gpu.sh ./
+COPY $RUN_SCRIPT ./
 
 EXPOSE 10200
 
-ENTRYPOINT ["bash", "/run-gpu.sh"]
+ENTRYPOINT ["bash", "/${RUN_SCRIPT}"]
