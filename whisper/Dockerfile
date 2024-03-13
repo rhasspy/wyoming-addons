@@ -1,4 +1,4 @@
-ARG BASE
+ARG BASE=debian:bullseye-slim
 FROM $BASE
 
 # Install Whisper

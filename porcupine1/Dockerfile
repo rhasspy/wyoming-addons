@@ -1,4 +1,4 @@
-ARG BASE
+ARG BASE=debian:bookworm-slim
 FROM $BASE
 
 ARG TARGETARCH
