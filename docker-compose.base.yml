@@ -1,9 +1,6 @@
 version: '3'
 ### YAML Anchors ###
 x-common: &common
-  build:
-    args:
-      - BASE=debian:bullseye-slim
   restart: unless-stopped
 
 ####
