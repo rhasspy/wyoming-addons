@@ -1,8 +1,4 @@
-ARG BASE=debian:bullseye-slim
-FROM $BASE
-
-ARG EXTRA_DEPENDENCIES
-ARG RUN_SCRIPT=run-nongpu.sh
+FROM debian:bullseye-slim
 ARG TARGETARCH
 ARG TARGETVARIANT
 
@@ -21,7 +17,6 @@ RUN \
     && pip3 install --no-cache-dir -U \
         setuptools \
         wheel \
-        $EXTRA_DEPENDENCIES \
     && pip3 install --no-cache-dir \
         "wyoming-piper @ https://github.com/rhasspy/wyoming-piper/archive/refs/tags/v${WYOMING_PIPER_VERSION}.tar.gz" \
     \
@@ -32,9 +27,8 @@ RUN \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /
-COPY $RUN_SCRIPT ./
-ENV RUN_SCRIPT_ENV=$RUN_SCRIPT
+COPY run.sh ./
 
 EXPOSE 10200
 
-ENTRYPOINT ["bash", "/${RUN_SCRIPT_ENV}"]
+ENTRYPOINT ["bash", "/run.sh"]
