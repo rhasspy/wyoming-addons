@@ -1,6 +1,6 @@
 .PHONY: local run update
 
-VERSION := 2.1.0
+VERSION := 2.2.0
 TAG := rhasspy/wyoming-whisper
 PLATFORMS := linux/amd64,linux/arm64
 DATA_DIR := ${HOME}/.local/share/wyoming/whisper
