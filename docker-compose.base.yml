@@ -58,3 +58,10 @@ services:
 #      - "10400:10400"
 #    <<: [ *common ]
 
+#  wyoming-microwakeword:
+#    build:
+#      context: ./microwakeword/
+#    ports:
+#      - "10400:10400"
+#    <<: [ *common ]
+

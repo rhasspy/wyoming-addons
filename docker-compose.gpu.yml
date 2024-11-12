@@ -68,3 +68,9 @@ services:
 #      service: wyoming-vosk
 #    <<: [ *gpu ]
 
+#  wyoming-microwakeword:
+#    extends:
+#      file: docker-compose.base.yml
+#      service: wyoming-microwakeword
+#    <<: [ *gpu ]
+
