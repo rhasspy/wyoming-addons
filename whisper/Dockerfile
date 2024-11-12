@@ -1,4 +1,5 @@
-FROM debian:bullseye-slim
+ARG BASE=debian:bullseye-slim
+FROM $BASE
 
 # Install Whisper
 WORKDIR /usr/src
