@@ -1,4 +1,6 @@
-FROM debian:bookworm-slim
+ARG BASE=debian:bookworm-slim
+FROM $BASE
+
 ARG TARGETARCH
 ARG TARGETVARIANT
 
