@@ -3,7 +3,7 @@ version: '3'
 x-gpu: &gpu
   build:
     args:
-      - BASE=nvidia/cuda:12.1.1-cudnn8-runtime-ubuntu22.04
+      - BASE=nvidia/cuda:12.3.2-cudnn9-runtime-ubuntu22.04
   runtime: nvidia
   deploy:
     resources:
@@ -23,12 +23,11 @@ services:
     build:
       dockerfile: GPU.Dockerfile
       args:
-        - BASE=nvidia/cuda:11.2.2-cudnn8-runtime-ubuntu20.04
         - EXTRA_DEPENDENCIES=onnxruntime-gpu
         - RUN_SCRIPT=run-gpu.sh
     volumes:
-      - ./piper/__main__.py:/usr/local/lib/python3.8/dist-packages/wyoming_piper/__main__.py
-      - ./piper/process.py:/usr/local/lib/python3.8/dist-packages/wyoming_piper/process.py
+      - ./piper/__main__.py:/opt/venv/lib/python3.11/site-packages/wyoming_piper/__main__.py
+      - ./piper/process.py:/opt/venv/lib/python3.11/site-packages/wyoming_piper/process.py
 
   wyoming-whisper:
     extends:

@@ -3,7 +3,7 @@ FROM $BASE
 
 # Install Whisper
 WORKDIR /usr/src
-ARG WYOMING_WHISPER_VERSION='2.2.0'
+ARG WYOMING_WHISPER_VERSION='2.4.0'
 
 RUN \
     apt-get update \

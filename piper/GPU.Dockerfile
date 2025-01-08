@@ -2,7 +2,7 @@ ARG BASE=debian:bookworm-slim
 FROM $BASE
 
 ARG EXTRA_DEPENDENCIES
-ARG RUN_SCRIPT='run-nongpu.sh'
+ARG RUN_SCRIPT='run.sh'
 ARG TARGETARCH
 ARG TARGETVARIANT
 
@@ -11,6 +11,10 @@ WORKDIR /usr/src
 ARG WYOMING_PIPER_VERSION='1.5.0'
 ARG BINARY_PIPER_VERSION='1.2.0'
 
+# Create and activate virtual environment
+ENV VIRTUAL_ENV=/opt/venv
+ENV PATH="$VIRTUAL_ENV/bin:$PATH"
+
 RUN \
     apt-get update \
     && apt-get install -y --no-install-recommends \
@@ -18,8 +22,12 @@ RUN \
         curl \
         python3 \
         python3-pip \
+        python3-venv \
     \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* \
+    \
+    # Create virtual environment
+    && python3 -m venv $VIRTUAL_ENV
 
 RUN \
     pip3 install --no-cache-dir -U \
@@ -27,9 +35,9 @@ RUN \
         wheel \
         $EXTRA_DEPENDENCIES \
     \
-    && wget https://github.com/rhasspy/piper-phonemize/releases/download/v1.1.0/piper_phonemize-1.1.0-cp39-cp39-manylinux_2_28_x86_64.whl \
+    && wget https://github.com/rhasspy/piper-phonemize/releases/download/v1.1.0/piper_phonemize-1.1.0-cp311-cp311-manylinux_2_28_x86_64.whl \
     \
-    && mv piper_phonemize-1.1.0-cp39-cp39-manylinux_2_28_x86_64.whl piper_phonemize-1.1.0-py3-none-any.whl \
+    && mv piper_phonemize-1.1.0-cp311-cp311-manylinux_2_28_x86_64.whl piper_phonemize-1.1.0-py3-none-any.whl \
     \
     && pip3 install --no-cache-dir --force-reinstall --no-deps \
         "piper-tts==${BINARY_PIPER_VERSION}" \
