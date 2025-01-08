@@ -74,3 +74,8 @@ services:
 #      service: wyoming-microwakeword
 #    <<: [ *gpu ]
 
+#  wyoming-rhasspy-speech:
+#    extends:
+#      file: docker-compose.base.yml
+#      service: wyoming-rhasspy-speech
+#    <<: [ *gpu ]

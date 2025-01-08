@@ -65,3 +65,9 @@ services:
 #      - "10400:10400"
 #    <<: [ *common ]
 
+#  wyoming-rhasspy-speech:
+#    build:
+#      context: ./rhasspy-speech/
+#    ports:
+#      - "10300:10300"
+#    <<: [ *common ]
