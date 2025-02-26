@@ -1,0 +1,72 @@
+### YAML Anchors ###
+x-common: &common
+  restart: unless-stopped
+
+####
+services:
+  wyoming-piper:
+    build:
+      context: ./piper/
+    ports:
+      - "10200:10200"
+    command: [ "--voice", "en_US-lessac-medium" ]
+    <<: [ *common ]
+
+  wyoming-whisper:
+    build:
+      context: ./whisper/
+    ports:
+      - "10300:10300"
+    command: [ "--model", "tiny-int8", "--language", "en" ]
+    <<: [ *common ]
+
+#  wyoming-whispercpp:
+#    build:
+#      context: ./whisper-cpp/
+#    ports:
+#      - "10300:10300"
+#    command: [ "--model", "tiny-int8", "--language", "en" ]
+#    <<: [ *common ]
+
+  wyoming-openwakeword:
+    build:
+      context: ./openwakeword/
+    ports:
+      - "10400:10400"
+    command: [ "--preload-model", "ok_nabu" ]
+    <<: [ *common ]
+
+#  wyoming-porcupine:
+#    build:
+#      context: ./porcupine1/
+#    ports:
+#      - "10400:10400"
+#    <<: [ *common ]
+
+#  wyoming-snowboy:
+#    build:
+#      context: ./snowboy/
+#    ports:
+#      - "10400:10400"
+#    <<: [ *common ]
+
+#  wyoming-vosk:
+#    build:
+#      context: ./vosk/
+#    ports:
+#      - "10400:10400"
+#    <<: [ *common ]
+
+#  wyoming-microwakeword:
+#    build:
+#      context: ./microwakeword/
+#    ports:
+#      - "10400:10400"
+#    <<: [ *common ]
+
+#  wyoming-rhasspy-speech:
+#    build:
+#      context: ./rhasspy-speech/
+#    ports:
+#      - "10300:10300"
+#    <<: [ *common ]

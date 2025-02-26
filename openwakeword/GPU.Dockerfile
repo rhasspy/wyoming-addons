@@ -4,9 +4,9 @@ FROM $BASE
 ARG TARGETARCH
 ARG TARGETVARIANT
 
-# Install porcupine1
+# Install openWakeWord
 WORKDIR /usr/src
-ENV WYOMING_PORCUPINE1_VERSION=1.2.0
+ARG WYOMING_OPENWAKEWORD_VERSION='1.8.2'
 
 RUN \
     apt-get update \
@@ -14,14 +14,16 @@ RUN \
         python3 \
         python3-pip \
         python3-venv \
+        libopenblas0 \
     \
     && python3 -m venv .venv \
-    && .venv/bin/pip3 install --no-cache-dir -U \
+    && .venv/bin/pip3 install --no-cache-dir uv \
+    && .venv/bin/uv pip install --no-cache-dir -U \
         setuptools \
         wheel \
-    && .venv/bin/pip3 install --no-cache-dir \
-        --extra-index-url https://www.piwheels.org/simple \
-        "wyoming-porcupine1 @ https://github.com/rhasspy/wyoming-porcupine1/archive/refs/tags/v${WYOMING_PORCUPINE1_VERSION}.tar.gz" \
+    && .venv/bin/uv pip install --no-cache-dir \
+        --exclude-newer 2023-12-12 \
+        "wyoming-openwakeword==${WYOMING_OPENWAKEWORD_VERSION}" \
     \
     && rm -rf /var/lib/apt/lists/*
 

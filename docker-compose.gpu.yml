@@ -1,0 +1,81 @@
+### YAML Anchors ###
+x-gpu: &gpu
+  build:
+    args:
+      - BASE=nvidia/cuda:12.3.2-cudnn9-runtime-ubuntu22.04
+  runtime: nvidia
+  deploy:
+    resources:
+      reservations:
+        devices:
+          - driver: nvidia
+            count: all
+            capabilities: ["compute", "utility", "graphics"]
+
+####
+services:
+  wyoming-piper:
+    extends:
+      file: docker-compose.base.yml
+      service: wyoming-piper
+    <<: [ *gpu ]
+    build:
+      dockerfile: GPU.Dockerfile
+      args:
+        - EXTRA_DEPENDENCIES=onnxruntime-gpu
+        - RUN_SCRIPT=run-gpu.sh
+    volumes:
+      - ./piper/__main__.py:/opt/venv/lib/python3.11/site-packages/wyoming_piper/__main__.py
+      - ./piper/process.py:/opt/venv/lib/python3.11/site-packages/wyoming_piper/process.py
+
+  wyoming-whisper:
+    extends:
+      file: docker-compose.base.yml
+      service: wyoming-whisper
+    <<: [ *gpu ]
+    command: [ "--model", "tiny-int8", "--language", "en", "--device", "cuda" ]
+
+#  wyoming-whispercpp:
+#    extends:
+#      file: docker-compose.base.yml
+#      service: wyoming-whispercpp
+#    <<: [ *gpu ]
+#    command: [ "--model", "tiny-int8", "--language", "en", "--device", "cuda" ]
+
+  wyoming-openwakeword:
+    extends:
+      file: docker-compose.base.yml
+      service: wyoming-openwakeword
+    build:
+      dockerfile: GPU.Dockerfile
+    <<: [ *gpu ]
+
+#  wyoming-porcupine:
+#    extends:
+#      file: docker-compose.base.yml
+#      service: wyoming-porcupine
+#    <<: [ *gpu ]
+
+#  wyoming-snowboy:
+#    extends:
+#      file: docker-compose.base.yml
+#      service: wyoming-snowboy
+#    <<: [ *gpu ]
+
+#  wyoming-vosk:
+#    extends:
+#      file: docker-compose.base.yml
+#      service: wyoming-vosk
+#    <<: [ *gpu ]
+
+#  wyoming-microwakeword:
+#    extends:
+#      file: docker-compose.base.yml
+#      service: wyoming-microwakeword
+#    <<: [ *gpu ]
+
+#  wyoming-rhasspy-speech:
+#    extends:
+#      file: docker-compose.base.yml
+#      service: wyoming-rhasspy-speech
+#    <<: [ *gpu ]
