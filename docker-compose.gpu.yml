@@ -47,6 +47,8 @@ services:
     extends:
       file: docker-compose.base.yml
       service: wyoming-openwakeword
+    build:
+      dockerfile: GPU.Dockerfile
     <<: [ *gpu ]
 
 #  wyoming-porcupine:
