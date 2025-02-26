@@ -13,13 +13,16 @@ RUN \
     && apt-get install -y --no-install-recommends \
         python3 \
         python3-pip \
+        python3-venv \
         libopenblas0 \
     \
-    && pip3 install --no-cache-dir uv \
-    && uv pip install --system --no-cache-dir -U \
+    && python3 -m venv .venv \
+    && .venv/bin/pip3 install --no-cache-dir uv \
+    && .venv/bin/uv pip install --no-cache-dir -U \
         setuptools \
         wheel \
-    && uv pip install --system --no-cache-dir \
+    && .venv/bin/uv pip install --no-cache-dir \
+        --exclude-newer 2023-12-12 \
         "wyoming-openwakeword==${WYOMING_OPENWAKEWORD_VERSION}" \
     \
     && rm -rf /var/lib/apt/lists/*

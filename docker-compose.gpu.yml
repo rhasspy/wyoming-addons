@@ -1,4 +1,3 @@
-version: '3'
 ### YAML Anchors ###
 x-gpu: &gpu
   build:
