@@ -10,13 +10,13 @@ HOST := 0.0.0.0
 PORT := 10300
 
 all:
-	docker buildx build . --platform "$(PLATFORMS)" --tag "$(TAG):$(VERSION)" --push
+	docker buildx build . --platform "$(PLATFORMS)" --tag "$(TAG):$(VERSION)" --build-arg WYOMING_WHISPER_VERSION=$(VERSION) --push
 
 update:
-	docker buildx build . --platform "$(PLATFORMS)" --tag "$(TAG):latest" --push
+	docker buildx build . --platform "$(PLATFORMS)" --tag "$(TAG):latest" --build-arg WYOMING_WHISPER_VERSION=$(VERSION) --push
 
 local:
-	docker build . -t "$(TAG):$(VERSION)" --build-arg TARGETARCH=amd64
+	docker build . -t "$(TAG):$(VERSION)" --build-arg TARGETARCH=amd64 --build-arg WYOMING_WHISPER_VERSION=$(VERSION)
 
 run:
 	mkdir -p "$(DATA_DIR)"
