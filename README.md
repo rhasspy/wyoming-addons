@@ -17,6 +17,12 @@ Docker-only builds for Home Assistant add-ons that use the [Wyoming protocol](ht
 docker run -it -p 10300:10300 -v /path/to/local/data:/data rhasspy/wyoming-whisper --model tiny-int8 --language en
 ```
 
+Use a HuggingFace transformers model instead of faster-whisper:
+
+``` sh
+docker run -it -p 10300:10300 -v /path/to/local/data:/data rhasspy/wyoming-whisper --use-transformers --model openai/whisper-tiny.en --language en
+```
+
 
 ## Run Piper
 
