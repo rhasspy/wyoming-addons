@@ -1,10 +1,11 @@
 .PHONY: local run update
 
-VERSION := 2.4.0
+VERSION := 2.5.0
 TAG := rhasspy/wyoming-whisper
 PLATFORMS := linux/amd64,linux/arm64
 DATA_DIR := ${HOME}/.local/share/wyoming/whisper
 MODEL := tiny-int8
+# MODEL := openai/whisper-tiny.en  # needs --use-transformers
 MODEL_LANG := en
 HOST := 0.0.0.0
 PORT := 10300
