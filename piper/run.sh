@@ -11,7 +11,8 @@ python3 -m wyoming_piper \
     --piper '/usr/share/piper/piper' \
     --uri 'tcp://0.0.0.0:10200' \
     --data-dir /data \
-    --download-dir /data "$@" &
+    --download-dir /data \
+    --streaming "$@" &
 MAIN_APP_PID=$!
 
 # Forward termination signals to child processes

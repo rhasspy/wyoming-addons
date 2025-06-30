@@ -18,6 +18,15 @@ The `--voice` argument can be the path to a custom voice file (`<voice>.onnx`). 
 
 Use `--update-voices` to update the list of available voices.
 
+## HTTP Server
+
+An HTTP server is available on port 5000:
+
+``` sh
+docker run -it -p 5000:5000 -p 10200:10200 -v /path/to/local/data:/data rhasspy/wyoming-piper --voice en_US-lessac-medium
+
+```
+
 
 [aarch64-shield]: https://img.shields.io/badge/aarch64-yes-green.svg
 [amd64-shield]: https://img.shields.io/badge/amd64-yes-green.svg
