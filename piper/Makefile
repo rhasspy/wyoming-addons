@@ -1,6 +1,6 @@
 .PHONY: local run update
 
-VERSION := 1.6.2
+VERSION := 1.6.3
 TAG := rhasspy/wyoming-piper
 PLATFORMS := linux/amd64,linux/arm64,linux/arm/v7
 DATA_DIR := ${HOME}/.local/share/wyoming/piper
