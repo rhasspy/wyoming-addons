@@ -3,7 +3,6 @@ x-gpu: &gpu
   build:
     args:
       - BASE=nvidia/cuda:12.3.2-cudnn9-runtime-ubuntu22.04
-  runtime: nvidia
   deploy:
     resources:
       reservations:
