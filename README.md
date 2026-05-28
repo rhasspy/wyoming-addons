@@ -46,11 +46,13 @@ Visit http://localhost:5000 to explore the API.
 docker run -it -p 10400:10400 rhasspy/wyoming-openwakeword --preload-model 'ok_nabu'
 ```
 
+
 ## Run snowboy
 
 ``` sh
 docker run -it -p 10400:10400 rhasspy/wyoming-snowboy
 ```
+
 
 ## Run microWakeWord
 
@@ -58,14 +60,64 @@ docker run -it -p 10400:10400 rhasspy/wyoming-snowboy
 docker run -it -p 10400:10400 rhasspy/wyoming-microwakeword
 ```
 
+
 ## Run rhasspy-speech
 
 ``` sh
 docker run -it -p 10300:10300 -v /path/to/download/models:/models -v /path/to/train:/train rhasspy/wyoming-rhasspy-speech
 ```
 
+
 ## Run speech-to-phrase
 
 ``` sh
 docker run -it -p 10300:10300 -v /path/to/download/models:/models -v /path/to/train:/train rhasspy/wyoming-speech-to-phrase --hass-websocket-uri 'ws://homeassistant.local:8123/api/websocket' --hass-token '<LONG_LIVED_ACCESS_TOKEN>' --retrain-on-start
 ```
+
+
+## To run in standalone server
+
+### Run without GPU
+
+Build openwakeword, piper and whisper without GPU with:
+
+``` sh
+docker compose -f docker-compose.base.yml build --no-cache
+```
+
+Run it with:
+
+``` sh
+docker compose -f docker-compose.base.yml up -d
+```
+
+Take it down with:
+
+``` sh
+docker compose down
+```
+
+### Run with GPU
+
+Build openwakeword, piper and whisper with GPU with:
+
+``` sh
+docker compose -f docker-compose.gpu.yml build --no-cache
+```
+
+Run it with:
+
+``` sh
+docker compose -f docker-compose.gpu.yml up -d
+```
+
+Take it down with:
+
+``` sh
+docker compose down
+```
+
+### Extend it
+
+You can extend those files adding your own languages.
+More on docker compose extend in the [official documentation](https://docs.docker.com/compose/multiple-compose-files/extends/).
