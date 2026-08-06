@@ -70,3 +70,11 @@ docker run -it -p 10300:10300 -v /path/to/download/models:/models -v /path/to/tr
 ``` sh
 docker run -it -p 10300:10300 -v /path/to/download/models:/models -v /path/to/train:/train rhasspy/wyoming-speech-to-phrase --hass-websocket-uri 'ws://homeassistant.local:8123/api/websocket' --hass-token '<LONG_LIVED_ACCESS_TOKEN>' --retrain-on-start
 ```
+
+## Run stt-fallback
+
+Speech-to-text entity ids are given as positional arguments, and are tried in order until one returns a transcript:
+
+``` sh
+docker run -it -p 10300:10300 rhasspy/wyoming-stt-fallback --hass-http-uri 'http://homeassistant.local:8123/api' --hass-token '<LONG_LIVED_ACCESS_TOKEN>' stt.speech_to_phrase stt.faster_whisper
+```
