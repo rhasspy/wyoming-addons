@@ -9,6 +9,7 @@ Docker-only builds for Home Assistant add-ons that use the [Wyoming protocol](ht
 * [microWakeWord](https://hub.docker.com/r/rhasspy/wyoming-microwakeword) ([Add-on](https://github.com/rhasspy/hassio-addons/tree/master/microwakeword/README.md))
 * [rhasspy-speech](https://hub.docker.com/r/rhasspy/wyoming-rhasspy-speech) ([Add-on](https://github.com/rhasspy/hassio-addons/tree/master/rhasspy-speech/README.md))
 * [speech-to-phrase](https://hub.docker.com/r/rhasspy/wyoming-speech-to-phrase) ([Add-on](https://github.com/home-assistant/addons/blob/master/speech_to_phrase/README.md))
+* [stt-fallback](https://hub.docker.com/r/rhasspy/wyoming-stt-fallback) ([Add-on](https://github.com/rhasspy/hassio-addons/blob/master/stt-fallback/README.md))
 
 
 ## Run Whisper
