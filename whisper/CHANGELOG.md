@@ -1,5 +1,25 @@
 # Changelog
 
+## 3.0.2
+
+- Set `--data-dir /data` in Docker run script
+
+## 3.0.1
+
+- Fix model auto selection logic
+
+## 3.0.0
+
+- Add support for sherpa-onnx and Nvidia's parakeet model
+- Add support for GigaAM for Russian via onnx-asr
+- Add --stt-library to select speech-to-text library (deprecate --use-transformers)
+- Default --model to "auto" (prefer parakeet)
+- Add Docker build here [which means to https://github.com/rhasspy/wyoming-faster-whisper, which now seems to supercede this repo]
+- Default --language to "auto"
+- Add --cpu-threads for faster-whisper (@Zerwin)
+
+https://github.com/rhasspy/wyoming-faster-whisper/compare/v2.5.0...v3.0.0
+
 ## 2.5.0
 
 - Add support for HuggingFace transformers Whisper models (`--use-transformers`)
