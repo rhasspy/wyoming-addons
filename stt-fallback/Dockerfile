@@ -5,7 +5,7 @@ ARG TARGETVARIANT
 # Install stt-fallback
 # The hassio-addons repo is not tagged, so the source is pinned by commit.
 WORKDIR /usr/src
-ENV COMMIT=f3ed8114eddc11382552e1c3a4329c0b7c823ce4
+ENV COMMIT=77d15160c51196ada10f7e4144f17b3666524e25
 
 RUN \
     apt-get update \
