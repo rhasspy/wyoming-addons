@@ -1,6 +1,6 @@
 .PHONY: local run update
 
-VERSION := 1.0.0
+VERSION := 1.0.1
 TAG := rhasspy/wyoming-stt-fallback
 PLATFORMS := linux/amd64,linux/arm64
 HOST := 0.0.0.0
